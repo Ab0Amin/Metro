@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:uber="http://schemas.android.com/tools"
+    android:background="#FFFFFF"
+    tools:context=".outSideMetroActivity">
+
+    <EditText
+        android:id="@+id/tx_currentLocation"
+        android:layout_width="176dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="52dp"
+        android:ems="10"
+        android:hint="Current Location"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="64dp"
+        android:text="From"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="32dp"
+        android:text="TO"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tx_currentLocation" />
+
+    <EditText
+        android:id="@+id/tx_targetLoacation"
+        android:layout_width="173dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="Target Location"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/tx_currentLocation"
+        app:layout_constraintTop_toBottomOf="@+id/tx_currentLocation" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="169dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:checkedButton="@id/rd_Waking"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+        <RadioButton
+            android:id="@+id/rd_Waking"
+            android:layout_width="93dp"
+            android:layout_height="wrap_content"
+            android:text="Walking" />
+
+        <RadioButton
+            android:id="@+id/rd_uber"
+            android:layout_width="87dp"
+            android:layout_height="wrap_content"
+            android:text="Uber" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#4EC8C8"
+        android:text="  Go To Metro Station  "
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tx_targetLoacation" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="44dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="55dp"
+        android:background="#F6F1F1"
+        android:onClick="GetCurrentLocation"
+        app:layout_constraintStart_toEndOf="@+id/tx_currentLocation"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/map" />
+
+    <TextView
+        android:id="@+id/Tx_nearstStationFromCusrrent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="15dp"
+        android:hint="nearst Staions"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/Tx_nearstStationFromTarget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="15dp"
+        android:hint="nearst Staions"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <ScrollView
+        android:id="@+id/SR_dataview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="5dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView9"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Frist"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tx_fistDetails"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Second Inside Metro"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/BT_metroroad"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Third"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="0dp"
+                    android:background="#457ADA"
+                    android:gravity="center"
+                    android:text="Trip Details"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <com.uber.sdk.android.rides.RideRequestButton
+                    android:id="@+id/bt_requestToFirstStation"
+                    android:layout_width="61dp"
+                    android:layout_height="50dp"
+                    android:layout_alignStart="@+id/BT_metroroad"
+                    android:layout_alignTop="@+id/BT_metroroad"
+                    android:layout_alignEnd="@+id/BT_metroroad"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="-70dp"
+                    android:layout_marginEnd="15dp"
+                    android:onClick="request"
+                    android:visibility="invisible"
+                    uber:ub__style="black" />
+
+                <com.uber.sdk.android.rides.RideRequestButton
+                    android:id="@+id/bt_requestToLastStation"
+                    android:layout_width="61dp"
+                    android:layout_height="50dp"
+                    android:layout_alignStart="@+id/BT_metroroad"
+                    android:layout_alignTop="@+id/BT_metroroad"
+                    android:layout_alignEnd="@+id/BT_metroroad"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="75dp"
+                    android:layout_marginEnd="15dp"
+                    android:onClick="request2"
+                    android:visibility="invisible"
+                    uber:ub__style="black" />
+
+                <Button
+                    android:id="@+id/bt_showFromC_TO_FirstStation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="20dp"
+                    android:onClick="openMap"
+                    android:text="Go"
+                    android:visibility="visible"
+                    app:backgroundTint="#D51515" />
+
+                <Button
+                    android:id="@+id/BT_metroroad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView7"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:enabled="false"
+                    android:onClick="getMetroroad"
+
+                    android:text="Details"
+                    app:backgroundTint="#D51515" />
+
+                <Button
+                    android:id="@+id/bt_showFromL_TO_T"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/bt_newTrip"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="-10dp"
+                    android:enabled="false"
+                    android:onClick="openMap2"
+
+                    android:text="Go"
+                    android:visibility="visible"
+                    app:backgroundTint="#D51515" />
+
+                <Button
+                    android:id="@+id/bt_newTrip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tx_thirdDetails"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginEnd="150dp"
+                    android:layout_marginBottom="0dp"
+                    android:onClick="newTrip"
+
+                    android:text="New Trip"
+                    app:backgroundTint="#D51515" />
+
+                <TextView
+                    android:id="@+id/tx_fistDetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="120dp"
+                    android:text="TextView"
+                    android:textColor="#E40B0A0A" />
+
+                <TextView
+                    android:id="@+id/tx_secDetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/textView8"
+                    android:layout_below="@+id/textView7"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="120dp"
+                    android:layout_marginBottom="0dp"
+                    android:text="TextView"
+                    android:textColor="#E40B0A0A" />
+
+                <TextView
+                    android:id="@+id/tx_thirdDetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView8"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="120dp"
+                    android:text="TextView"
+                    android:textColor="#E40B0A0A" />
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:onClick="map"
+        android:text="Result"
+        app:backgroundTint="#D51515"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
